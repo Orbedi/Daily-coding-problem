@@ -28,27 +28,38 @@ class Tree:
                 tree.right = self.insert(tree.right, data)
         return tree
 
-    def search(self, tree, data):
+    def search(self, tree, data, result):
         if tree is None:
-            return None
+            return
         else:
             if data == tree.value[0:len(data)]:
-                print(tree.value)
-                self.search(tree.left, data)
-                self.search(tree.right, data)
+                result.append(tree.value)
+                self.search(tree.left, data, result)
+                self.search(tree.right, data, result)
             elif data < tree.value:
-                return self.search(tree.left, data)
+                self.search(tree.left, data, result)
             else:
-                return self.search(tree.right, data)
+                self.search(tree.right, data, result)
+
+
+def prefix(list_, prfx):
+    tree = Tree()
+    for item in list_:
+        tree.root = tree.insert(tree.root, item)
+    result = []
+    tree.search(tree.root, prfx, result)
+    return result
 
 
 if __name__ == '__main__':
-    list_ = ['aaa', 'bbb', 'ccc', 'dog', 'deer', 'home', 'car', 'deal', 'aba']
+    list_ = ['aaa', 'bbb', 'ccc', 'dog', 'deer', 'home', 'car', 'deal', 'aba', 'dezf']
     list_2 = ['ccc', 'bba', 'baa', 'dde', 'ddd']
     list_3 = ['ccc', 'cbba', 'cbaa', 'cdde', 'cddd']
     list_4 = []
-    tree = Tree()
-    for item in list_4:
-        tree.root = tree.insert(tree.root, item)
-    tree.search(tree.root, 'c')
+
+    assert prefix(list_,'de') == ['deer', 'deal', 'dezf']
+    assert prefix(list_2,'b') == ['bba', 'baa']
+    assert prefix(list_3,'c') == ['ccc', 'cbba', 'cbaa', 'cdde', 'cddd']
+    assert prefix(list_3,'cd') == ['cdde', 'cddd']
+    assert prefix(list_4,'prueba') == []
 
