@@ -44,7 +44,7 @@ def memo_staircase_x(n, x):
     return result[0]
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':    
     assert staircase(0) == 1
     assert staircase(1) == 1
     assert staircase(2) == 2
