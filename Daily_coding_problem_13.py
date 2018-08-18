@@ -23,4 +23,11 @@ def longest_substr(s, k):
 
 
 if __name__ == '__main__':
-    print(longest_substr('abcaaaacaakaa', 2))
+    assert longest_substr('',4) == ''
+    assert longest_substr('abc',4) == 'abc'
+    assert longest_substr('abcba',2) == 'bcb'
+    assert longest_substr('aaaabaaaaa',1) == 'aaaaa'
+    assert longest_substr('abcdefghij',5) == 'abcde'
+    assert longest_substr('aaaabaaaaa',2) == 'aaaabaaaaa'
+    assert longest_substr('abcabcabcdacb',3) == 'abcabcabc'
+    assert longest_substr('cbdaaaaabbasdf',2) == 'aaaaabba'
